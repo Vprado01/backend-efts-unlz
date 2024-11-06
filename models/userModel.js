@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   profilePicture: { type: String, required: false },
   passwordResetToken: { type: String, required: false },
-  passwordResetExpires: { type: Date, required: true },
+  passwordResetExpires: { type: Date, required: false },
   role: { type: String, required: false },
   licence: { type: String, required: false }
 });

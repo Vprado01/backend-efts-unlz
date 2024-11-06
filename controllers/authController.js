@@ -2,6 +2,7 @@ import User from '../models/userModel.js';
 import { createInitialProgress } from '../controllers/progressController.js'
 import { generateToken } from '../services/auth.services.js'
 import { comparePassword } from '../services/password.services.js';
+import { use } from 'bcrypt/promises.js';
 
 // Registro
 export const register = async (req, res) => {
@@ -16,13 +17,13 @@ export const register = async (req, res) => {
 
     if (existingUser)
       return res.status(400).json({ message: "Usuario ya registrado" });
-
+    
     const user = new User(
       { 
         name,
         lastName,
         email,
-        password
+        password,
       });
 
     await user.save();
